@@ -12,7 +12,7 @@ exports.handler = async function read(req) {
   }
 
   todos.sort((a, b) => a.created - b.created)
-
+  console.log(todos)
   return {
     statusCode: 201,
     headers: {

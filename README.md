@@ -1,2 +1,0 @@
-# begincrud
-Begin app

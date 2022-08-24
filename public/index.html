@@ -19,6 +19,7 @@
 <body>
 
     <div id="wrapper">
+        <p id="pos"></p>
         <h1>
             <!-- 晚上加班吃什么，在洪厨[美味盖浇饭]吃什么？ -->
             [满汉全席] 吃什么
@@ -90,7 +91,29 @@
     <script src="https://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script src="random.js"></script>
     <script src="three_punch_combo.js"></script>
+    <script>
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
 
+        function success(pos) {
+            var crd = pos.coords;
+
+            console.log('Your current position is:');
+            console.log('Latitude : ' + crd.latitude);
+            console.log('Longitude: ' + crd.longitude);
+            console.log('More or less ' + crd.accuracy + ' meters.');
+            $('#pos').text('Your current position is:'+'Latitude : ' + crd.latitude+'Longitude: ' + crd.longitude+'More or less ' + crd.accuracy + ' meters.')
+        };
+
+        function error(err) {
+            console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    </script>
 </body>
 
 </html>
